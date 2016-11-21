@@ -1,0 +1,14 @@
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\Project.Model.dll.config
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\Project.Model.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\Project.Model.pdb
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\EntityFramework.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\EntityFramework.xml
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\obj\Debug\Project.Model.csprojResolveAssemblyReference.cache
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\obj\Debug\Project.Model.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\obj\Debug\Project.Model.pdb
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\Project.Model.Common.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\Project.Model.Common.pdb
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\Ninject.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Model\bin\Debug\Ninject.xml
