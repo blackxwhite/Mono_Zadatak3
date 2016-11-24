@@ -8,8 +8,6 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
-using Project.DAL;
-using Project.DAL.Models;
 using Project.Service.Common;
 using System.Threading.Tasks;
 using AutoMapper;
