@@ -11,9 +11,14 @@ using System.Web.Http.Description;
 using Project.DAL;
 using Project.DAL.Models;
 using Project.Service.Common;
+using System.Threading.Tasks;
+using AutoMapper;
+using Project.MVC_WebAPI.ViewModels;
+using Project.Model;
 
 namespace Project.MVC_WebAPI.Controllers
 {
+    [Route("api/[VehicleMake]")]
     public class VehicleMakesController : ApiController
     {
 
@@ -24,105 +29,80 @@ namespace Project.MVC_WebAPI.Controllers
             _vehicleMakeService = vehicleMakeService;
         }
 
-        private VehicleContext db = new VehicleContext();
+        //private VehicleContext db = new VehicleContext();
 
         // GET: api/VehicleMakes
-        public IQueryable<VehicleMake> GetVehicleMakes()
+        [HttpGet]
+        public async Task<HttpResponseMessage> GetVehicleMakes()
         {
-            return db.VehicleMakes;
+            var vehicleMakes = Mapper.Map<IEnumerable<VehicleMakeViewModel>>(await _vehicleMakeService.GetAllVehicleMake());
+            return Request.CreateResponse(HttpStatusCode.OK, vehicleMakes);
         }
 
         // GET: api/VehicleMakes/5
-        [ResponseType(typeof(VehicleMake))]
-        public IHttpActionResult GetVehicleMake(Guid id)
+        [ResponseType(typeof(VehicleMakeViewModel))]
+        //[HttpGet]
+        public async Task<HttpResponseMessage> GetVehicleMake(Guid id)
         {
-            VehicleMake vehicleMake = db.VehicleMakes.Find(id);
+            var vehicleMake = Mapper.Map<VehicleMakeViewModel>(await _vehicleMakeService.GetIdVehicleMake(id));
             if (vehicleMake == null)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.OK, vehicleMake);
             }
 
-            return Ok(vehicleMake);
+            return Request.CreateResponse(HttpStatusCode.OK, vehicleMake);
         }
 
         // PUT: api/VehicleMakes/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutVehicleMake(Guid id, VehicleMake vehicleMake)
+        public async Task<HttpResponseMessage> PutVehicleMake(Guid id, VehicleMakeViewModel vehicleMake)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return BadRequest(ModelState);
+                var vehicleMakes = await _vehicleMakeService.UpdateVehicleMake(Mapper.Map<VehicleMakeDomainModel>(vehicleMake));
+                return Request.CreateResponse(HttpStatusCode.OK, vehicleMakes);
             }
-
-            if (id != vehicleMake.VehicleMakeId)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(vehicleMake).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!VehicleMakeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
+            return Request.CreateResponse(HttpStatusCode.InternalServerError, "error, can't update");
         }
 
         // POST: api/VehicleMakes
-        [ResponseType(typeof(VehicleMake))]
-        public IHttpActionResult PostVehicleMake(VehicleMake vehicleMake)
+        [ResponseType(typeof(VehicleMakeViewModel))]
+        public async Task<HttpResponseMessage> PostVehicleMake(VehicleMakeViewModel vehicleMake)
         {
-            if (!ModelState.IsValid)
+            try
             {
-                return BadRequest(ModelState);
+                if (ModelState.IsValid)
+                {
+                    var vehicleMakes = await _vehicleMakeService.InsertVehicleMake(Mapper.Map<VehicleMakeDomainModel>(vehicleMake));
+                    return Request.CreateResponse(HttpStatusCode.OK, vehicleMakes);
+                }
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "error, can't add");
             }
-
-            db.VehicleMakes.Add(vehicleMake);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = vehicleMake.VehicleMakeId }, vehicleMake);
+            catch(Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "error, can't add" + ex);
+            }
+            //return CreatedAtRoute("DefaultApi", new { id = vehicleMake.VehicleMakeId }, vehicleMake);
         }
 
         // DELETE: api/VehicleMakes/5
-        [ResponseType(typeof(VehicleMake))]
-        public IHttpActionResult DeleteVehicleMake(Guid id)
+        [ResponseType(typeof(VehicleMakeViewModel))]
+        public async Task<HttpResponseMessage> DeleteVehicleMake(Guid id)
         {
-            VehicleMake vehicleMake = db.VehicleMakes.Find(id);
+            var vehicleMake = Mapper.Map<VehicleMakeViewModel>(await _vehicleMakeService.GetIdVehicleMake(id));
+
             if (vehicleMake == null)
             {
-                return NotFound();
+                return Request.CreateResponse(HttpStatusCode.NotFound, "vehicle maker not found");
             }
-
-            db.VehicleMakes.Remove(vehicleMake);
-            db.SaveChanges();
-
-            return Ok(vehicleMake);
+            
+            var removeVehicleMake = await _vehicleMakeService.DeleteVehicleMake(Mapper.Map<VehicleMakeDomainModel>(vehicleMake));
+            return Request.CreateResponse(HttpStatusCode.OK, removeVehicleMake);
         }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool VehicleMakeExists(Guid id)
-        {
-            return db.VehicleMakes.Count(e => e.VehicleMakeId == id) > 0;
-        }
+        //private bool VehicleMakeExists(Guid id)
+        //{
+        //    return db.VehicleMakes.Count(e => e.VehicleMakeId == id) > 0;
+        //}
     }
 }

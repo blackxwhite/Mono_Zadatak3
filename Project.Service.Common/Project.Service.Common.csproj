@@ -61,7 +61,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IVehicleService.cs" />
+    <Compile Include="IVehicleMakeService.cs" />
+    <Compile Include="IVehicleModelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +73,10 @@
     <ProjectReference Include="..\Project.DAL\Project.DAL.csproj">
       <Project>{ea1589ae-c36f-4d78-a101-98ce72b5a051}</Project>
       <Name>Project.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Project.Model.Common\Project.Model.Common.csproj">
+      <Project>{327bfcc5-df25-436f-9df0-586dcf4df3a9}</Project>
+      <Name>Project.Model.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Project.Model\Project.Model.csproj">
       <Project>{49b56f12-e64b-495d-8fbf-d296af532263}</Project>

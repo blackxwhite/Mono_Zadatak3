@@ -24,3 +24,9 @@ C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Servi
 C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.DAL.Common.dll
 C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Ninject.xml
 C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.DAL.Common.pdb
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.Repository.Common.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.Repository.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.Service.Common.dll
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.Repository.Common.pdb
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.Repository.pdb
+C:\Users\Josip\Documents\Visual Studio 2015\Projects\Mono_Zadatak3\Project.Service\bin\Debug\Project.Service.Common.pdb
