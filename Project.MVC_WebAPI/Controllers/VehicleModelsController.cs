@@ -16,7 +16,7 @@ using Project.Model;
 
 namespace Project.MVC_WebAPI.Controllers
 {
-    [Route("api/[VehicleModel]")]
+    [RoutePrefix("api/VehicleModels")]
     public class VehicleModelsController : ApiController
     {
         private IVehicleModelService _vehicleModelService;
@@ -30,6 +30,7 @@ namespace Project.MVC_WebAPI.Controllers
 
         // GET: api/VehicleModels
         [HttpGet]
+        [Route("getvehiclemodels")]
         public async Task<HttpResponseMessage> GetVehicleModels()
         {
             var vehicleModels = Mapper.Map<IEnumerable<VehicleMakeViewModel>>(await _vehicleModelService.GetAllVehicleModel());
