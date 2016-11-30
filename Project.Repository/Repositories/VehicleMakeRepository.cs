@@ -13,7 +13,7 @@ namespace Project.Repository.Repositories
 {
     public class VehicleMakeRepository : IVehicleMakeRepository
     {
-        private IGenericRepository _genericRepository;
+        private readonly IGenericRepository _genericRepository;
 
         public VehicleMakeRepository(IGenericRepository genericRepository)
         {

@@ -1,25 +1,20 @@
-﻿using System;
+﻿using AutoMapper;
+using Project.Model;
+using Project.MVC_WebAPI.ViewModels;
+using Project.Service.Common;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Project.Service.Common;
 using System.Threading.Tasks;
-using AutoMapper;
-using Project.MVC_WebAPI.ViewModels;
-using Project.Model;
+using System.Web.Http;
 
 namespace Project.MVC_WebAPI.Controllers
 {
     [RoutePrefix("api/VehicleMake")]
     public class VehicleMakesController : ApiController
     {
-
         private IVehicleMakeService _vehicleMakeService;
 
         public VehicleMakesController(IVehicleMakeService vehicleMakeService)
@@ -31,7 +26,7 @@ namespace Project.MVC_WebAPI.Controllers
 
         // GET: api/VehicleMakes
         [HttpGet]
-        [Route("getall")]
+        [Route("getallvmake")]
         public async Task<HttpResponseMessage> GetVehicleMakes()
         {
             var vehicleMakes = Mapper.Map<IEnumerable<VehicleMakeViewModel>>(await _vehicleMakeService.GetAllVehicleMake());
@@ -39,8 +34,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // GET: api/VehicleMakes/5
-        [ResponseType(typeof(VehicleMakeViewModel))]
-        //[HttpGet]
+        //[ResponseType(typeof(VehicleMakeViewModel))]
+        [HttpGet]
+        [Route("getvmake")]
         public async Task<HttpResponseMessage> GetVehicleMake(Guid id)
         {
             var vehicleMake = Mapper.Map<VehicleMakeViewModel>(await _vehicleMakeService.GetIdVehicleMake(id));
@@ -53,7 +49,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // PUT: api/VehicleMakes/5
-        [ResponseType(typeof(void))]
+        //[ResponseType(typeof(void))]
+        [HttpPut]
+        [Route("putvmake")]
         public async Task<HttpResponseMessage> PutVehicleMake(Guid id, VehicleMakeViewModel vehicleMake)
         {
             if (ModelState.IsValid)
@@ -65,7 +63,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // POST: api/VehicleMakes
-        [ResponseType(typeof(VehicleMakeViewModel))]
+        //[ResponseType(typeof(VehicleMakeViewModel))]
+        [HttpPost]
+        [Route("postvmake")]
         public async Task<HttpResponseMessage> PostVehicleMake(VehicleMakeViewModel vehicleMake)
         {
             try
@@ -77,7 +77,7 @@ namespace Project.MVC_WebAPI.Controllers
                 }
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "error, can't add");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "error, can't add" + ex);
             }
@@ -85,7 +85,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // DELETE: api/VehicleMakes/5
-        [ResponseType(typeof(VehicleMakeViewModel))]
+        //[ResponseType(typeof(VehicleMakeViewModel))]
+        [HttpDelete]
+        [Route("deletevmake")]
         public async Task<HttpResponseMessage> DeleteVehicleMake(Guid id)
         {
             var vehicleMake = Mapper.Map<VehicleMakeViewModel>(await _vehicleMakeService.GetIdVehicleMake(id));
@@ -94,7 +96,7 @@ namespace Project.MVC_WebAPI.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.NotFound, "vehicle maker not found");
             }
-            
+
             var removeVehicleMake = await _vehicleMakeService.DeleteVehicleMake(Mapper.Map<VehicleMakeDomainModel>(vehicleMake));
             return Request.CreateResponse(HttpStatusCode.OK, removeVehicleMake);
         }

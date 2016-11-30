@@ -10,14 +10,6 @@ namespace Project.MVC_WebAPI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using DAL;
-    using DAL.Common;
-    using DAL.Common.Models;
-    using DAL.Models;
-    using Model.Common;
-    using Model;
-    using Repository.Common.IRepositories;
-    using Repository.Repositories;
 
     public static class NinjectWebCommon 
     {
@@ -69,14 +61,6 @@ namespace Project.MVC_WebAPI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<IVehicleContext>().To<VehicleContext>().InRequestScope();
-            kernel.Bind<IVehicleMake>().To<VehicleMake>().InRequestScope();
-            kernel.Bind<IVehicleModel>().To<VehicleModel>().InRequestScope();
-            kernel.Bind<IVehicleMakeDomainModel>().To<VehicleMakeDomainModel>().InRequestScope();
-            kernel.Bind<IVehicleModelDomainModel>().To<VehicleModelDomainModel>().InRequestScope();
-            kernel.Bind<IGenericRepository>().To<GenericRepository>().InRequestScope();
-            kernel.Bind<IVehicleMakeRepository>().To<VehicleMakeRepository>().InRequestScope();
-            kernel.Bind<IVehicleModelRepository>().To<VehicleModelRepository>().InRequestScope();
-        }
+        }        
     }
 }

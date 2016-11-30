@@ -1,18 +1,14 @@
-﻿using System;
+﻿using AutoMapper;
+using Project.Model;
+using Project.MVC_WebAPI.ViewModels;
+using Project.Service.Common;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Web.Http;
-using System.Web.Http.Description;
-using Project.Service.Common;
 using System.Threading.Tasks;
-using AutoMapper;
-using Project.MVC_WebAPI.ViewModels;
-using Project.Model;
+using System.Web.Http;
 
 namespace Project.MVC_WebAPI.Controllers
 {
@@ -30,7 +26,7 @@ namespace Project.MVC_WebAPI.Controllers
 
         // GET: api/VehicleModels
         [HttpGet]
-        [Route("getvehiclemodels")]
+        [Route("getallvmodels")]
         public async Task<HttpResponseMessage> GetVehicleModels()
         {
             var vehicleModels = Mapper.Map<IEnumerable<VehicleMakeViewModel>>(await _vehicleModelService.GetAllVehicleModel());
@@ -38,7 +34,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // GET: api/VehicleModels/5
-        [ResponseType(typeof(VehicleModelViewModel))]
+        //[ResponseType(typeof(VehicleModelViewModel))]
+        [HttpGet]
+        [Route("getvmodel")]
         public async Task<HttpResponseMessage> GetVehicleModel(Guid id)
         {
             var vehicleModel = Mapper.Map<VehicleModelViewModel>(await _vehicleModelService.GetIdVehicleModel(id));
@@ -51,7 +49,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // PUT: api/VehicleModels/5
-        [ResponseType(typeof(void))]
+        //[ResponseType(typeof(void))]
+        [HttpPut]
+        [Route("putvmodel")]
         public async Task<HttpResponseMessage> PutVehicleModel(Guid id, VehicleModelViewModel vehicleModel)
         {
             if (ModelState.IsValid)
@@ -64,7 +64,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // POST: api/VehicleModels
-        [ResponseType(typeof(VehicleModelViewModel))]
+        //[ResponseType(typeof(VehicleModelViewModel))]
+        [HttpPost]
+        [Route("postvmodel")]
         public async Task<HttpResponseMessage> PostVehicleModel(VehicleModelViewModel vehicleModel)
         {
             try
@@ -84,7 +86,9 @@ namespace Project.MVC_WebAPI.Controllers
         }
 
         // DELETE: api/VehicleModels/5
-        [ResponseType(typeof(VehicleModelViewModel))]
+        //[ResponseType(typeof(VehicleModelViewModel))]
+        [HttpDelete]
+        [Route("deletevmodel")]
         public async Task<HttpResponseMessage> DeleteVehicleModel(Guid id)
         {
             var vehicleModel = Mapper.Map<VehicleModelViewModel>(await _vehicleModelService.GetIdVehicleModel(id));

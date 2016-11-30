@@ -13,6 +13,6 @@ namespace Project.Model
         public Guid VehicleMakeId { get; set; }
         public string VehicleModelName { get; set; }
         public string VehicleModelAbrv { get; set; }
-        public VehicleMakeDomainModel VehicleMake { get; set; }
+        public IVehicleMakeDomainModel VehicleMake { get; set; }
     }
 }

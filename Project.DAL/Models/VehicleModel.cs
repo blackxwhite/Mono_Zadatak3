@@ -11,7 +11,6 @@ namespace Project.DAL.Models
 {
     public class VehicleModel : IVehicleModel
     {
-        [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid VehicleModelId { get; set; }
         public Guid VehicleMakeId { get; set; }

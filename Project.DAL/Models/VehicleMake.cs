@@ -18,6 +18,6 @@ namespace Project.DAL.Models
         public string VehicleMakeName { get; set; }
         public string VehicleMakeAbrv { get; set; }
 
-        public ICollection<VehicleModel> VehicleModel;
+        //public ICollection<VehicleModel> VehicleModel;
     }
 }

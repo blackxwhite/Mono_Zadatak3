@@ -13,6 +13,6 @@ namespace Project.Model
         public string VehicleMakeName { get; set; }
         public string VehicleMakeAbrv { get; set; }
 
-        public ICollection<VehicleModelDomainModel> VehicleModel { get; set; }
+        public ICollection<IVehicleModelDomainModel> VehicleModel { get; set; }
     }
 }

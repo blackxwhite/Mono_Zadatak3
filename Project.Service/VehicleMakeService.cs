@@ -16,7 +16,7 @@ namespace Project.Service
 {
     public class VehicleMakeService : IVehicleMakeService
     {
-        private IVehicleMakeRepository _vehicleMakeRepository;
+        private readonly IVehicleMakeRepository _vehicleMakeRepository;
 
         public VehicleMakeService(IVehicleMakeRepository vehicleMakeRepository)
         {
